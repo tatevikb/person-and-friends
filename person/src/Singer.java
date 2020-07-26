@@ -1,63 +1,36 @@
-
-
-/**
- * Class Singer
- */
 public class Singer extends Person {
-
-  //
-  // Fields
-  //
-
   private String bandName;
-  
-  //
-  // Constructors
-  //
-  public Singer () { };
-  
-  //
-  // Methods
-  //
 
-
-  //
-  // Accessor methods
-  //
+  public Singer (String name, String designation, String bandName)
+  {
+    super(name, designation);
+    this.bandName = bandName;
+  }
 
   /**
    * Set the value of bandName
-   * @param newVar the new value of bandName
+   * @param bandName the new value of bandName
    */
-  public void setBandName (String newVar) {
-    bandName = newVar;
+  public void setBandName(String bandName) {
+    this.bandName = bandName;
   }
 
   /**
    * Get the value of bandName
    * @return the value of bandName
    */
-  public String getBandName () {
+  public String getBandName() {
     return bandName;
   }
 
-  //
-  // Other methods
-  //
-
-  /**
-   */
   public void singing()
   {
+    System.out.println("singing");
   }
 
-
-  /**
-   * @return       String
-   */
   public void playGuitar()
   {
+    System.out.println("playing guitar");
   }
-
 
 }

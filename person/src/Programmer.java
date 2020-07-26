@@ -1,36 +1,18 @@
-
-
-/**
- * Class Programmer
- */
 public class Programmer extends Person {
-
-  //
-  // Fields
-  //
-
   private String companyName;
-  
-  //
-  // Constructors
-  //
-  public Programmer () { };
-  
-  //
-  // Methods
-  //
 
-
-  //
-  // Accessor methods
-  //
+  public Programmer(String name, String designation, String companyName)
+  {
+    super(name, designation);
+    this.companyName = companyName;
+  }
 
   /**
    * Set the value of companyName
-   * @param newVar the new value of companyName
+   * @param companyName the new value of companyName
    */
-  public void setCompanyName (String newVar) {
-    companyName = newVar;
+  public void setCompanyName (String companyName) {
+    this.companyName = companyName;
   }
 
   /**
@@ -41,15 +23,9 @@ public class Programmer extends Person {
     return companyName;
   }
 
-  //
-  // Other methods
-  //
-
-  /**
-   */
   public void coding()
   {
+    System.out.println("writing codes");
   }
-
 
 }
