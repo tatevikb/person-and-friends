@@ -1,4 +1,8 @@
-public class Dancer extends Person {
+package homeworks.person.core.model;
+
+import homeworks.person.core.service.DancerAction;
+
+public class Dancer extends BasePerson implements DancerAction {
   private String groupName;
 
   public Dancer(String name, String designation, String groupName)
@@ -23,9 +27,8 @@ public class Dancer extends Person {
     return groupName;
   }
 
-  public void dancing()
-  {
-    System.out.println("dance");
+  @Override
+  public void dancing() {
+    System.out.println("dancing.");
   }
-
 }
