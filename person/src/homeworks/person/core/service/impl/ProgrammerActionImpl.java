@@ -1,8 +1,5 @@
 package homeworks.person.core.service.impl;
 
-import homeworks.person.core.model.BasePerson;
-import homeworks.person.core.model.Programmer;
-import homeworks.person.core.service.PersonAction;
 import homeworks.person.core.service.ProgrammerAction;
 
 public class ProgrammerActionImpl implements ProgrammerAction {

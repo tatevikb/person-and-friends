@@ -1,7 +1,5 @@
 package homeworks.person.core.service.impl;
 
-import homeworks.person.core.model.BasePerson;
-import homeworks.person.core.model.Singer;
 import homeworks.person.core.service.SingerAction;
 
 public class SingerActionImpl implements SingerAction {

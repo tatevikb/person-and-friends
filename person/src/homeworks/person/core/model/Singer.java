@@ -1,6 +1,5 @@
 package homeworks.person.core.model;
 
-import homeworks.person.core.service.PersonAction;
 import homeworks.person.core.service.SingerAction;
 
 public class Singer extends BasePerson implements SingerAction {
