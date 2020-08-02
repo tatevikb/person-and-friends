@@ -1,4 +1,8 @@
-public class Singer extends Person {
+package homeworks.person.core.model;
+
+import homeworks.person.core.service.SingerAction;
+
+public class Singer extends BasePerson implements SingerAction {
   private String bandName;
 
   public Singer (String name, String designation, String bandName)
@@ -23,14 +27,13 @@ public class Singer extends Person {
     return bandName;
   }
 
-  public void singing()
-  {
-    System.out.println("singing");
+  @Override
+  public void singing() {
+    System.out.println("practising.");
   }
 
-  public void playGuitar()
-  {
-    System.out.println("playing guitar");
+  @Override
+  public void playingGuitar() {
+    System.out.println("playing guitar.");
   }
-
 }

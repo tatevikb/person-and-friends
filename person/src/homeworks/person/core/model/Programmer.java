@@ -1,4 +1,8 @@
-public class Programmer extends Person {
+package homeworks.person.core.model;
+
+import homeworks.person.core.service.ProgrammerAction;
+
+public class Programmer extends BasePerson implements ProgrammerAction {
   private String companyName;
 
   public Programmer(String name, String designation, String companyName)
@@ -23,9 +27,8 @@ public class Programmer extends Person {
     return companyName;
   }
 
-  public void coding()
-  {
-    System.out.println("writing codes");
+  @Override
+  public void coding() {
+    System.out.println("writing a code.");
   }
-
 }
