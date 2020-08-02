@@ -7,24 +7,27 @@ public class SingerActionImpl implements SingerAction {
     @Override
     public void learn()
     {
-        System.out.println("The singer is learning the lyrics of the song.");
+        System.out.println("Singer can walk unlimited.");
     }
 
     @Override
     public void eat()
     {
-        System.out.println("The singer is eating proteins.");
+        System.out.println("Singer can eat only after walk.");
     }
+
+    @Override
+    public void walk() { System.out.println("Singer can walk unlimited."); }
 
     @Override
     public void singing()
     {
-        System.out.println("The singer is singing a song.");
+        System.out.println("Singer can sing only after eat.");
     }
 
     @Override
     public void playingGuitar()
     {
-        System.out.println("The singer is playing guitar.");
+        System.out.println("Singer can play only after walk.");
     }
 }

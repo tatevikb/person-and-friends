@@ -1,55 +1,108 @@
 package homeworks.person.core.model;
 
+import homeworks.person.core.exceptions.InvalidAgeException;
+import homeworks.person.core.exceptions.InvalidGenderException;
+import homeworks.person.core.exceptions.InvalidNameException;
 import homeworks.person.core.service.PersonAction;
+import homeworks.person.utils.Validate;
 
-public class BasePerson implements PersonAction {
+public abstract class BasePerson implements PersonAction {
     protected String name;
-    protected String designation;
+    protected String lastName;
+    protected String surname;
+    protected String nickname;
+    protected int age;
+    protected String email;
+    protected String  gender;
 
-    public BasePerson(String name, String designation)
+    protected PersonAction actions;
+
+    public BasePerson() {}
+
+
+    public void setName(String name)
     {
-        this.name = name;
-        this.designation = designation;
-    }
-    /**
-     * Set the value of name
-     * @param name the new value of name
-     */
-    public void setName(String name) {
+        if(!Validate.name(name, "^[A-Z][a-z]*$"))
+            throw new InvalidNameException();
+
         this.name = name;
     }
 
-    /**
-     * Get the value of name
-     * @return the value of name
-     */
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    /**
-     * Set the value of designation
-     * @param designation the new value of designation
-     */
-    public void setDesignation(String designation) {
-        this.designation = designation;
+    public void setLastName(String lastName)
+    {
+        if(!Validate.name(lastName, "^[A-Z][a-z]*$"))
+            throw new InvalidNameException();
+
+        this.lastName = lastName;
     }
 
-    /**
-     * Get the value of designation
-     * @return the value of designation
-     */
-    public String getDesignation() {
-        return designation;
+    public String getLastName()
+    {
+        return lastName;
     }
 
-    @Override
-    public void learn() {
+    public void setSurname(String surname)
+    {
+        if(!Validate.name(surname, "^[A-Z][a-z]*$"))
+            throw new InvalidNameException();
 
+        this.surname = surname;
     }
 
-    @Override
-    public void eat() {
-
+    public String getSurname()
+    {
+        return surname;
     }
+
+    public void setNickname(String nickname)
+    {
+        if(!Validate.name(nickname, "^[a-z0-9]+$"))
+            throw new InvalidNameException();
+
+        this.nickname = nickname;
+    }
+
+    public String getNickname()
+    {
+        return nickname;
+    }
+
+    public void setEmail(String email)
+    {
+        if(!email.matches("^(.+)@(.+)$"))
+            throw new InvalidNameException();
+
+        this.email = email;
+    }
+
+    public String getEmail() { return email; }
+
+    public void setAge(int age)
+    {
+        if(!Validate.age(age))
+            throw new InvalidAgeException();
+
+        this.age = age;
+    }
+
+    public int getAge() { return age; }
+
+    public void setGender(String gender)
+    {
+        if(!Validate.gender(gender))
+            throw new InvalidGenderException();
+
+        this.gender = gender;
+    }
+
+    public String getGender() { return gender; }
+
+    public abstract void setDesignation(String designation);
+
+    public abstract String getDesignation();
 }

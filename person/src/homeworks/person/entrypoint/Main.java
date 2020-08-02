@@ -1,41 +1,67 @@
 package homeworks.person.entrypoint;
 
-import homeworks.person.core.model.Dancer;
+import homeworks.person.core.enums.Profession;
 import homeworks.person.core.model.BasePerson;
+import homeworks.person.core.model.Dancer;
 import homeworks.person.core.model.Programmer;
 import homeworks.person.core.model.Singer;
+import homeworks.person.core.service.factory.PersonFactory;
+import homeworks.person.utils.Input;
 
 public class Main {
-    public static void main(String[] args) {
-        BasePerson[] people = new BasePerson[4];
-        people[0] = new BasePerson("Tatevik Badalyan", "person");
-        people[1] = new Programmer("Bill Gates", "programmer", "Microsoft");
-        people[2] = new Dancer("Susanna Reid", "dancer", "Paso doble");
-        people[3] = new Singer("Fabian Manzano","singer", "Boyce Avenue");
+    public static void main(String[] args)
+    {
+        int errorCount = 0;
 
-        for(BasePerson p : people) {
-            System.out.println(p.getClass().getName());
-        }
+        while(errorCount <= 3) {
+            System.out.println("~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~");
+            int num = Input.number("Person type");
+            if(num > 3 || num < 1) {
+                errorCount++;
+                System.out.println("Person not supported!");
+                continue;
+            }
 
-        System.out.print(people[0].getName() + " and ");
-        people[0].walk();
+            BasePerson person = PersonFactory.create(Profession.values()[num - 1]);
 
-        System.out.print(people[1].getDesignation() + " is ");
-        if(people[1] instanceof Programmer) {
-            Programmer pr = (Programmer)people[1];
-            pr.coding();
-        }
+            String name = Input.string("Name");
+            person.setName(name);
 
-        if(people[2] instanceof Dancer) {
-            Dancer dr = (Dancer)people[2];
-            System.out.print(dr.getGroupName() + " ");
-            dr.dancing();
-        }
+            String lastName = Input.string("Last name");
+            person.setLastName(lastName);
 
-        if(people[3] instanceof Singer) {
-            Singer sr = (Singer)people[3];
-            System.out.print(people[3].getName() + " is ");
-            sr.playingGuitar();
+            String surname = Input.string("Surname");
+            person.setSurname(surname);
+
+            String nickname = Input.string("Nickname");
+            person.setNickname(nickname);
+
+            String designation = Input.string("Designation");
+            person.setDesignation(designation);
+
+            int age = Input.number("Age");
+            person.setAge(age);
+
+            String email = Input.string("E-mail");
+            person.setEmail(email);
+
+            String gender = Input.string("Gender");
+            person.setGender(gender);
+
+            if (person instanceof Dancer) {
+                String groupName = Input.string("Group");
+                ((Dancer) person).setGroupName(groupName);
+            }
+
+            if (person instanceof Programmer) {
+                String companyName = Input.string("Company");
+                ((Programmer) person).setCompanyName(companyName);
+            }
+
+            if (person instanceof Singer) {
+                String bendName = Input.string("Band");
+                ((Singer) person).setBandName(bendName);
+            }
         }
     }
 }

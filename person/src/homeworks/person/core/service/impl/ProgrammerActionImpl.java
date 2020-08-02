@@ -7,19 +7,22 @@ public class ProgrammerActionImpl implements ProgrammerAction {
     @Override
     public void learn()
     {
-        System.out.println("The programmer is learning Java.");
+        System.out.println("Programmer can learn only after eating.");
     }
 
     @Override
     public void eat()
     {
-        System.out.println("The programmer is eating fast food.");
+        System.out.println("Programmer can eat unlimited.");
     }
+
+    @Override
+    public void walk() { System.out.println("Programmer can walk unlimited."); }
 
     @Override
     public void coding()
     {
-        System.out.println("The programmer is coding.");
+        System.out.println("Programmer can code only after learning.");
     }
 
 }
