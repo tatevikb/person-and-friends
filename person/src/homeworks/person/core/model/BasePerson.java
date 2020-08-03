@@ -105,4 +105,6 @@ public abstract class BasePerson implements PersonAction {
     public abstract void setDesignation(String designation);
 
     public abstract String getDesignation();
+
+    public abstract void act(String actionType);
 }

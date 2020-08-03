@@ -4,25 +4,15 @@ import homeworks.person.core.service.DancerAction;
 
 public class DancerActionImpl implements DancerAction {
     @Override
-    public void learn()
-    {
-        System.out.println("Dancer can learn unlimited.");
-    }
+    public void learn() {}
 
     @Override
-    public void eat()
-    {
-        System.out.println("Dancer can eat 3 time in a day not more.");
-    }
+    public void eat() {}
 
     @Override
-    public void walk() {
-        System.out.println("Dancer can walk unlimited.");
-    }
+    public void walk() {}
 
     @Override
-    public void dancing()
-    {
-        System.out.println("Dancer can dancing only after eating.");
-    }
+    public void dancing() {}
+
 }

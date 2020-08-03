@@ -21,6 +21,6 @@ public class Validate {
 
     public static boolean age(int age)
     {
-        return (age >= 0 || age <= 100);
+        return (age >= 0 && age <= 100);
     }
 }

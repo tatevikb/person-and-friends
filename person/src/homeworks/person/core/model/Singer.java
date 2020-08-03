@@ -10,6 +10,9 @@ public class Singer extends BasePerson implements SingerAction {
   private SingerType designation;
   private String bandName;
 
+  private boolean full;
+  private boolean walked;
+
   public Singer ()
   {
     actions = PersonActionFactory.getPersonAction(Profession.SINGER);
@@ -37,26 +40,44 @@ public class Singer extends BasePerson implements SingerAction {
 
   @Override
   public void singing() {
-    ((SingerAction) actions).singing();
+    if(full) {
+      System.out.printf("%s %s", name, surname + " is singing.");
+      System.out.println();
+      ((SingerAction) actions).singing();
+    }
+    else System.out.println("She/He hasn't ate, she/he can't sing.");
   }
 
   @Override
   public void playingGuitar() {
-    ((SingerAction) actions).playingGuitar();
+    if(walked && full) {
+      System.out.printf("%s %s", name, surname);
+      System.out.println();
+      ((SingerAction) actions).playingGuitar();
+    }
+    else System.out.println("She/He hasn't walked and ate yet, she/he can't play.");
   }
 
   @Override
   public void learn() {
+    System.out.printf("%s %s", name, surname + " is learning.");
+    System.out.println();
     actions.learn();
   }
 
   @Override
   public void eat() {
+    full = true;
+    System.out.printf("%s %s", name, surname + " is eating");
+    System.out.println();
     actions.eat();
   }
 
   @Override
   public void walk() {
+    walked = true;
+    System.out.printf("%s %s", name, surname + " is walking.");
+    System.out.println();
     actions.walk();
   }
 
@@ -68,5 +89,27 @@ public class Singer extends BasePerson implements SingerAction {
   @Override
   public String getDesignation() {
     return designation.toString();
+  }
+
+  @Override
+  public void act(String actionType)
+  {
+    switch (actionType) {
+      case "eat":
+        eat();
+        break;
+      case "walk":
+        walk();
+        break;
+      case "learn":
+        learn();
+        break;
+      case "singing":
+        singing();
+        break;
+      case "Playing guitar":
+        playingGuitar();
+        break;
+    }
   }
 }

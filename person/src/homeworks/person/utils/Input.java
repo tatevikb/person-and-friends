@@ -21,4 +21,5 @@ public class Input {
             str = scanner.nextLine();
         return str;
     }
+
 }

@@ -12,8 +12,9 @@ public class Main {
     public static void main(String[] args)
     {
         int errorCount = 0;
+        boolean exitRequested = false;
 
-        while(errorCount <= 3) {
+        while(errorCount < 3 && !exitRequested) {
             System.out.println("~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~");
             int num = Input.number("Person type");
             if(num > 3 || num < 1) {
@@ -59,8 +60,16 @@ public class Main {
             }
 
             if (person instanceof Singer) {
-                String bendName = Input.string("Band");
-                ((Singer) person).setBandName(bendName);
+                String bandName = Input.string("Band");
+                ((Singer) person).setBandName(bandName);
+            }
+
+            String actionType = Input.string("Action");
+            exitRequested = actionType.equals("exit");
+            while(!exitRequested) {
+                person.act(actionType);
+                actionType = Input.string("Action");
+                exitRequested = actionType.equals("exit");
             }
         }
     }

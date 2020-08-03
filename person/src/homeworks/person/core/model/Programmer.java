@@ -10,6 +10,9 @@ public class Programmer extends BasePerson implements ProgrammerAction {
   private ProgrammerType designation;
   private String companyName;
 
+  private boolean full;
+  private boolean learned;
+
   public Programmer() 
   {
     actions = PersonActionFactory.getPersonAction(Profession.PROGRAMMER);
@@ -37,21 +40,37 @@ public class Programmer extends BasePerson implements ProgrammerAction {
 
   @Override
   public void coding() {
-    ((ProgrammerAction) actions).coding();
+    if(learned) {
+      System.out.printf("%s %s", name, surname + " is writing a code.");
+      System.out.println();
+      ((ProgrammerAction) actions).coding();
+    }
+    else System.out.println("She/He hasn't learned, she/he can't code.");
   }
 
   @Override
   public void learn() {
-    actions.learn();
+    if(full) {
+      System.out.printf("%s %s", name, surname + " is learning.");
+      System.out.println();
+      actions.learn();
+      learned = true;
+    }
+    else System.out.println("She/He is not full and can't learn.");
   }
 
   @Override
   public void eat() {
+    full = true;
+    System.out.printf("%s %s", name, surname + " is eating.");
+    System.out.println();
     actions.eat();
   }
 
   @Override
   public void walk() {
+    System.out.printf("%s %s", name, surname + " is walking.");
+    System.out.println();
     actions.walk();
   }
 
@@ -64,4 +83,24 @@ public class Programmer extends BasePerson implements ProgrammerAction {
   public String getDesignation() {
     return designation.toString();
   }
+
+  @Override
+  public void act(String actionType)
+  {
+    switch (actionType) {
+      case "eat":
+        eat();
+        break;
+      case "walk":
+        walk();
+        break;
+      case "learn":
+        learn();
+        break;
+      case "coding":
+        coding();
+        break;
+    }
+  }
+
 }
