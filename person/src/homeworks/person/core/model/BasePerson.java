@@ -17,7 +17,7 @@ public abstract class BasePerson implements PersonAction {
 
     private static final String nameRegexp = "^[A-Z][a-z]*$";
     private static final String nicknameRegexp = "^[a-z0-9]+$";
-    private static final String mailRegexp = "^(.+)@(.+)$";
+    private static final String mailRegexp = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
 
     protected PersonAction actions;
 
