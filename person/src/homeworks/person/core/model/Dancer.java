@@ -1,5 +1,6 @@
 package homeworks.person.core.model;
 
+import homeworks.person.core.enums.ActionType;
 import homeworks.person.core.enums.DancerType;
 import homeworks.person.core.enums.Profession;
 import homeworks.person.core.exceptions.InvalidNameException;
@@ -10,7 +11,7 @@ public class Dancer extends BasePerson implements DancerAction {
     private DancerType designation;
     private String groupName;
 
-    private boolean full;
+    private boolean full = false;
 
     private int count = 0;
 
@@ -39,6 +40,9 @@ public class Dancer extends BasePerson implements DancerAction {
     return groupName;
   }
 
+    /**
+     * Checks, is dancer full? Dancer can dancing only after eating.
+     */
     @Override
     public void dancing() {
       if(full) {
@@ -56,6 +60,9 @@ public class Dancer extends BasePerson implements DancerAction {
         actions.learn();
     }
 
+    /**
+     * Checks, has dancer eaten 3 times in a day or more?
+     */
     @Override
     public void eat() {
         if(count < 3) {
@@ -90,17 +97,17 @@ public class Dancer extends BasePerson implements DancerAction {
     @Override
     public void act(String actionType)
     {
-        switch (actionType) {
-            case "eat":
+        switch (ActionType.valueOf(actionType.toUpperCase())) {
+            case EAT:
                 eat();
                 break;
-            case "walk":
+            case WALK:
                 walk();
                 break;
-            case "learn":
+            case LEARN:
                 learn();
                 break;
-            case "dancing":
+            case DANCE:
                 dancing();
                 break;
         }

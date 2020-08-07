@@ -1,5 +1,6 @@
 package homeworks.person.core.model;
 
+import homeworks.person.core.enums.ActionType;
 import homeworks.person.core.enums.Profession;
 import homeworks.person.core.enums.SingerType;
 import homeworks.person.core.exceptions.InvalidNameException;
@@ -10,8 +11,8 @@ public class Singer extends BasePerson implements SingerAction {
   private SingerType designation;
   private String bandName;
 
-  private boolean full;
-  private boolean walked;
+  private boolean full = false;
+  private boolean walked = false;
 
   public Singer ()
   {
@@ -38,6 +39,9 @@ public class Singer extends BasePerson implements SingerAction {
     return bandName;
   }
 
+  /**
+   * Checks if singer is full. Singer can sing only after eat.
+   */
   @Override
   public void singing() {
     if(full) {
@@ -48,6 +52,9 @@ public class Singer extends BasePerson implements SingerAction {
     else System.out.println("She/He hasn't ate, she/he can't sing.");
   }
 
+  /**
+   * Checks if the singer is out for a walk and full. Singer can play only after walk and eat something.
+   */
   @Override
   public void playingGuitar() {
     if(walked && full) {
@@ -94,20 +101,20 @@ public class Singer extends BasePerson implements SingerAction {
   @Override
   public void act(String actionType)
   {
-    switch (actionType) {
-      case "eat":
+    switch (ActionType.valueOf(actionType.toUpperCase())) {
+      case EAT:
         eat();
         break;
-      case "walk":
+      case WALK:
         walk();
         break;
-      case "learn":
+      case LEARN:
         learn();
         break;
-      case "singing":
+      case SING:
         singing();
         break;
-      case "Playing guitar":
+      case PLAY_GUITAR:
         playingGuitar();
         break;
     }

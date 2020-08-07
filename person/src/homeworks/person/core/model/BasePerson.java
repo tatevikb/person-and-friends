@@ -15,6 +15,10 @@ public abstract class BasePerson implements PersonAction {
     protected String email;
     protected String  gender;
 
+    private static final String nameRegexp = "^[A-Z][a-z]*$";
+    private static final String nicknameRegexp = "^[a-z0-9]+$";
+    private static final String mailRegexp = "^(.+)@(.+)$";
+
     protected PersonAction actions;
 
     public BasePerson() {}
@@ -22,7 +26,7 @@ public abstract class BasePerson implements PersonAction {
 
     public void setName(String name)
     {
-        if(!Validate.name(name, "^[A-Z][a-z]*$"))
+        if(!Validate.name(name, nameRegexp))
             throw new InvalidNameException();
 
         this.name = name;
@@ -35,7 +39,7 @@ public abstract class BasePerson implements PersonAction {
 
     public void setLastName(String lastName)
     {
-        if(!Validate.name(lastName, "^[A-Z][a-z]*$"))
+        if(!Validate.name(lastName, nameRegexp))
             throw new InvalidNameException();
 
         this.lastName = lastName;
@@ -48,7 +52,7 @@ public abstract class BasePerson implements PersonAction {
 
     public void setSurname(String surname)
     {
-        if(!Validate.name(surname, "^[A-Z][a-z]*$"))
+        if(!Validate.name(surname, nameRegexp))
             throw new InvalidNameException();
 
         this.surname = surname;
@@ -61,7 +65,7 @@ public abstract class BasePerson implements PersonAction {
 
     public void setNickname(String nickname)
     {
-        if(!Validate.name(nickname, "^[a-z0-9]+$"))
+        if(!Validate.name(nickname, nicknameRegexp))
             throw new InvalidNameException();
 
         this.nickname = nickname;
@@ -74,7 +78,7 @@ public abstract class BasePerson implements PersonAction {
 
     public void setEmail(String email)
     {
-        if(!email.matches("^(.+)@(.+)$"))
+        if(!email.matches(mailRegexp))
             throw new InvalidNameException();
 
         this.email = email;
