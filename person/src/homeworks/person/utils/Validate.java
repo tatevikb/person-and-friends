@@ -5,10 +5,7 @@ import homeworks.person.core.exceptions.InvalidNameException;
 public class Validate {
     public static boolean name(String name, String rx)
     {
-        if(name.length() > 255)
-            return false;
-
-        if(!name.matches(rx))
+        if(name.length() > 255 || !name.matches(rx))
             return false;
 
         return true;
