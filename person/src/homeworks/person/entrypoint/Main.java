@@ -1,75 +1,57 @@
 package homeworks.person.entrypoint;
 
+import homeworks.person.core.containers.PersonList;
 import homeworks.person.core.enums.Profession;
 import homeworks.person.core.model.BasePerson;
-import homeworks.person.core.model.Dancer;
-import homeworks.person.core.model.Programmer;
-import homeworks.person.core.model.Singer;
 import homeworks.person.core.service.factory.PersonFactory;
 import homeworks.person.utils.Input;
+import homeworks.person.utils.PersonData;
 
 public class Main {
     public static void main(String[] args)
     {
+        PersonList people = new PersonList();
+        BasePerson person = null;
+
         int errorCount = 0;
-        boolean exitRequested = false;
-
-        while(errorCount < 3 && !exitRequested) {
+        while(errorCount < 3) {
             System.out.println("~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~");
-            int num = Input.number("Person type");
-            if(num > 3 || num < 1) {
-                errorCount++;
-                System.out.println("Person not supported!");
-                continue;
+            String command = Input.string("Command");
+
+            if(command.equals("new")) {
+                int num = Input.number("Person type (1 - Dancer, 2 - Programmer, 3 - Singer)");
+                if (num > 3 || num < 1) {
+                    errorCount++;
+                    System.out.println("Person not supported!");
+                    continue;
+                }
+
+                person = PersonFactory.create(Profession.values()[num - 1]);
+                PersonData.input(person);
+                people.add(person);
             }
-
-            BasePerson person = PersonFactory.create(Profession.values()[num - 1]);
-
-            String name = Input.string("Name");
-            person.setName(name);
-
-            String lastName = Input.string("Last name");
-            person.setLastName(lastName);
-
-            String surname = Input.string("Surname");
-            person.setSurname(surname);
-
-            String nickname = Input.string("Nickname");
-            person.setNickname(nickname);
-
-            String designation = Input.string("Designation");
-            person.setDesignation(designation);
-
-            int age = Input.number("Age");
-            person.setAge(age);
-
-            String email = Input.string("E-mail");
-            person.setEmail(email);
-
-            String gender = Input.string("Gender");
-            person.setGender(gender);
-
-            if (person instanceof Dancer) {
-                String groupName = Input.string("Group");
-                ((Dancer) person).setGroupName(groupName);
+            else if(command.equals("action")) {
+                String actionType = Input.string("Action");
+                while (!actionType.equals("stop")) {
+                    person.act(actionType);
+                    actionType = Input.string("Action");
+                }
             }
-
-            if (person instanceof Programmer) {
-                String companyName = Input.string("Company");
-                ((Programmer) person).setCompanyName(companyName);
+            else if(command.equals("remove")) {
+                String nm = Input.string("Name");
+                String sm = Input.string("Surname");
+                people.remove(nm, sm);
             }
-
-            if (person instanceof Singer) {
-                String bandName = Input.string("Band");
-                ((Singer) person).setBandName(bandName);
+            else if(command.equals("edit")) {
+                String nm = Input.string("Name");
+                String sm = Input.string("Surname");
+                person = people.get(nm, sm);
+                if(person != null) {
+                    PersonData.input(person);
+                }
             }
-
-            String actionType = Input.string("Action");
-            exitRequested = actionType.equals("exit");
-            while(!exitRequested) {
-                person.act(actionType);
-                actionType = Input.string("Action");
-                exitRequested = actionType.equals("exit");
+            else if(command.equals("exit")) {
+                break;
             }
         }
     }

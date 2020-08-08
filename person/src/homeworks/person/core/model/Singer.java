@@ -58,7 +58,7 @@ public class Singer extends BasePerson implements SingerAction {
   @Override
   public void playingGuitar() {
     if(walked && full) {
-      System.out.printf("%s %s", name, surname);
+      System.out.printf("%s %s", name, surname + " is playing guitar.");
       System.out.println();
       ((SingerAction) actions).playingGuitar();
     }
