@@ -15,9 +15,9 @@ public abstract class BasePerson implements PersonAction {
     protected String email;
     protected String  gender;
 
-    private static final String nameRegexp = "^[A-Z][a-z]*$";
-    private static final String nicknameRegexp = "^[a-z0-9]+$";
-    private static final String mailRegexp = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+    private static final String NAME_REGEXP = "^[A-Z][a-z]*$";
+    private static final String NICKNAME_REGEXP = "^[a-z0-9]+$";
+    private static final String MAIL_REGEXP = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
 
     protected PersonAction actions;
 
@@ -26,7 +26,7 @@ public abstract class BasePerson implements PersonAction {
 
     public void setName(String name)
     {
-        if(!Validate.name(name, nameRegexp))
+        if(!Validate.name(name, NAME_REGEXP))
             throw new InvalidNameException();
 
         this.name = name;
@@ -39,7 +39,7 @@ public abstract class BasePerson implements PersonAction {
 
     public void setLastName(String lastName)
     {
-        if(!Validate.name(lastName, nameRegexp))
+        if(!Validate.name(lastName, NAME_REGEXP))
             throw new InvalidNameException();
 
         this.lastName = lastName;
@@ -52,7 +52,7 @@ public abstract class BasePerson implements PersonAction {
 
     public void setSurname(String surname)
     {
-        if(!Validate.name(surname, nameRegexp))
+        if(!Validate.name(surname, NAME_REGEXP))
             throw new InvalidNameException();
 
         this.surname = surname;
@@ -65,7 +65,7 @@ public abstract class BasePerson implements PersonAction {
 
     public void setNickname(String nickname)
     {
-        if(!Validate.name(nickname, nicknameRegexp))
+        if(!Validate.name(nickname, NICKNAME_REGEXP))
             throw new InvalidNameException();
 
         this.nickname = nickname;
@@ -78,7 +78,7 @@ public abstract class BasePerson implements PersonAction {
 
     public void setEmail(String email)
     {
-        if(!email.matches(mailRegexp))
+        if(!email.matches(MAIL_REGEXP))
             throw new InvalidNameException();
 
         this.email = email;
