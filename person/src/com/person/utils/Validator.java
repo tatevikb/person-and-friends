@@ -1,7 +1,7 @@
 package com.person.utils;
 
 public class Validator {
-    public static boolean name(String name, String rx)
+    public static boolean names(String name, String rx)
     {
         if(name.length() > 255 || !name.matches(rx))
             return false;

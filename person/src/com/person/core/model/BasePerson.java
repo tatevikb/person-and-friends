@@ -27,7 +27,7 @@ public abstract class BasePerson implements PersonAction {
      */
     public void setName(String name)
     {
-        if(!Validator.name(name, NAME_REGEXP))
+        if(!Validator.names(name, NAME_REGEXP))
             throw new ValidationException("Invalid name!");
 
         this.name = name;
@@ -48,7 +48,7 @@ public abstract class BasePerson implements PersonAction {
      */
     public void setLastName(String lastName)
     {
-        if(!Validator.name(lastName, NAME_REGEXP))
+        if(!Validator.names(lastName, NAME_REGEXP))
             throw new ValidationException("Invalid last name!");
 
         this.lastName = lastName;
@@ -69,7 +69,7 @@ public abstract class BasePerson implements PersonAction {
      */
     public void setSurname(String surname)
     {
-        if(!Validator.name(surname, NAME_REGEXP))
+        if(!Validator.names(surname, NAME_REGEXP))
             throw new ValidationException("Invalid surname!");
 
         this.surname = surname;
@@ -90,7 +90,7 @@ public abstract class BasePerson implements PersonAction {
      */
     public void setNickname(String nickname)
     {
-        if(!Validator.name(nickname, NICKNAME_REGEXP))
+        if(!Validator.names(nickname, NICKNAME_REGEXP))
             throw new ValidationException("Invalid nickname!");
 
         this.nickname = nickname;
