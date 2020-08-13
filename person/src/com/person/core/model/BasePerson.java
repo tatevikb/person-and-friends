@@ -170,9 +170,4 @@ public abstract class BasePerson implements PersonAction {
      */
     public abstract String getDesignation();
 
-    /**
-     * Performs given action.
-     * @param actionType
-     */
-    //public abstract void act(String actionType);
 }
