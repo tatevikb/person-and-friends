@@ -2,7 +2,7 @@ package com.person.core.model;
 
 import com.person.core.exceptions.ValidationException;
 import com.person.core.service.PersonAction;
-import com.person.utils.Validate;
+import com.person.utils.Validator;
 
 public abstract class BasePerson implements PersonAction {
     protected String name;
@@ -27,7 +27,7 @@ public abstract class BasePerson implements PersonAction {
      */
     public void setName(String name)
     {
-        if(!Validate.name(name, NAME_REGEXP))
+        if(!Validator.name(name, NAME_REGEXP))
             throw new ValidationException("Invalid name!");
 
         this.name = name;
@@ -48,7 +48,7 @@ public abstract class BasePerson implements PersonAction {
      */
     public void setLastName(String lastName)
     {
-        if(!Validate.name(lastName, NAME_REGEXP))
+        if(!Validator.name(lastName, NAME_REGEXP))
             throw new ValidationException("Invalid last name!");
 
         this.lastName = lastName;
@@ -69,7 +69,7 @@ public abstract class BasePerson implements PersonAction {
      */
     public void setSurname(String surname)
     {
-        if(!Validate.name(surname, NAME_REGEXP))
+        if(!Validator.name(surname, NAME_REGEXP))
             throw new ValidationException("Invalid surname!");
 
         this.surname = surname;
@@ -90,7 +90,7 @@ public abstract class BasePerson implements PersonAction {
      */
     public void setNickname(String nickname)
     {
-        if(!Validate.name(nickname, NICKNAME_REGEXP))
+        if(!Validator.name(nickname, NICKNAME_REGEXP))
             throw new ValidationException("Invalid nickname!");
 
         this.nickname = nickname;
@@ -128,7 +128,7 @@ public abstract class BasePerson implements PersonAction {
      */
     public void setAge(int age)
     {
-        if(!Validate.age(age))
+        if(!Validator.age(age))
             throw new ValidationException("Invalid age!");
 
         this.age = age;
@@ -146,7 +146,7 @@ public abstract class BasePerson implements PersonAction {
      */
     public void setGender(String gender)
     {
-        if(!Validate.gender(gender))
+        if(!Validator.gender(gender))
             throw new ValidationException("Invalid gender!");
 
         this.gender = gender;

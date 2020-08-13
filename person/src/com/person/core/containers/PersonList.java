@@ -7,7 +7,7 @@ import java.util.List;
 
 public class PersonList {
 
-    private List<BasePerson> people = new ArrayList<>();
+    private List<BasePerson> persons = new ArrayList<>();
 
     /**
      * Adds person to the list.
@@ -15,7 +15,7 @@ public class PersonList {
      */
     public void add(BasePerson person)
     {
-        people.add(person);
+        persons.add(person);
     }
 
     /**
@@ -24,12 +24,12 @@ public class PersonList {
      * @param surname
      * @return
      */
-    public BasePerson get(String name, String surname)
+    public BasePerson getByNameAndSurname (String name, String surname)
     {
-        for(BasePerson i: people)
+        for(BasePerson person: persons)
         {
-            if(i.getName().equals(name) && i.getSurname().equals(surname)) {
-                return i;
+            if(person.getName().equals(name) && person.getSurname().equals(surname)) {
+                return person;
             }
         }
         return null;
@@ -40,7 +40,7 @@ public class PersonList {
      */
     public void remove(String name, String surname)
     {
-        BasePerson bp = get(name, surname);
-        people.remove(bp);
+        BasePerson bp = getByNameAndSurname (name, surname);
+        persons.remove(bp);
     }
 }

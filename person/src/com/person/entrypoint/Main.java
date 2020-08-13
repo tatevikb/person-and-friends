@@ -45,7 +45,7 @@ public class Main {
             else if(command.equals("edit")) {
                 String nm = Input.string("Name");
                 String sm = Input.string("Surname");
-                person = people.get(nm, sm);
+                person = people.getByNameAndSurname(nm, sm);
                 if(person != null) {
                     PersonData.input(person);
                 }
