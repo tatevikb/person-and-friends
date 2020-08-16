@@ -44,8 +44,8 @@ public class ProgrammerActionImpl implements ProgrammerAction {
     }
 
     @Override
-    public void act(String actionType) {
-        switch (ActionType.valueOf(actionType.toUpperCase())) {
+    public void act(ActionType actionType) {
+        switch (actionType) {
             case EAT:
                 eat();
                 break;

@@ -1,5 +1,6 @@
 package com.person.core.model;
 
+import com.person.core.enumeration.ActionType;
 import com.person.core.enumeration.DancerType;
 import com.person.core.enumeration.Profession;
 import com.person.core.exceptions.ValidationException;
@@ -66,7 +67,7 @@ public class Dancer extends BasePerson implements DancerAction {
     }
 
     @Override
-    public void act(String actionType)
+    public void act(ActionType actionType)
     {
         actions.act(actionType);
     }

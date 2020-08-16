@@ -1,11 +1,29 @@
 package com.person.core.enumeration;
 
+import com.person.core.exceptions.ValidationException;
+
 public enum ActionType {
-    EAT,
-    WALK,
-    LEARN,
-    DANCE,
-    CODE,
-    SING,
-    PLAY_GUITAR
+    EAT("eat"),
+    WALK("walk"),
+    LEARN("learn"),
+    DANCE("dance"),
+    CODE("code"),
+    SING("sing"),
+    PLAY_GUITAR("play guitar"),
+    STOP("stop");
+
+    private String id;
+
+    ActionType(String id) {
+        this.id = id;
+    }
+
+    public static ActionType getById(String id) {
+        for(ActionType a : values()) {
+            if(a.id.equals(id)) {
+                return a;
+            }
+        }
+        throw new ValidationException("Bad action");
+    }
 }

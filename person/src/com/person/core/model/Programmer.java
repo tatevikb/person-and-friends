@@ -1,5 +1,6 @@
 package com.person.core.model;
 
+import com.person.core.enumeration.ActionType;
 import com.person.core.enumeration.Profession;
 import com.person.core.enumeration.ProgrammerType;
 import com.person.core.exceptions.ValidationException;
@@ -66,7 +67,7 @@ public class Programmer extends BasePerson implements ProgrammerAction {
   }
 
   @Override
-  public void act(String actionType)
+  public void act(ActionType actionType)
   {
       actions.act(actionType);
   }

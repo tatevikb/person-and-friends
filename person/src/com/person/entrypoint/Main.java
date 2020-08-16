@@ -1,6 +1,7 @@
 package com.person.entrypoint;
 
 import com.person.core.containers.PersonList;
+import com.person.core.enumeration.ActionType;
 import com.person.core.enumeration.Profession;
 import com.person.core.model.BasePerson;
 import com.person.core.service.factory.PersonFactory;
@@ -31,10 +32,12 @@ public class Main {
                 people.add(person);
             }
             else if(command.equals("action")) {
-                String actionType = Input.string("Action");
-                while (!actionType.equals("stop")) {
-                    person.act(actionType);
-                    actionType = Input.string("Action");
+                String actionStr = Input.string("Action");
+                ActionType action = ActionType.getById(actionStr);
+                while (ActionType.STOP != action) {
+                    person.act(action);
+                    actionStr = Input.string("Action");
+                    action = ActionType.getById(actionStr);
                 }
             }
             else if(command.equals("remove")) {

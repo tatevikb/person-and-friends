@@ -35,8 +35,8 @@ public class SingerActionImpl implements SingerAction {
     }
 
     @Override
-    public void act(String actionType) {
-        switch (ActionType.valueOf(actionType.toUpperCase())) {
+    public void act(ActionType actionType) {
+        switch (actionType) {
             case EAT:
                 eat();
                 break;
