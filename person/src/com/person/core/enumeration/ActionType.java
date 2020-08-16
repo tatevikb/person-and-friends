@@ -1,5 +1,6 @@
 package com.person.core.enumeration;
 
+import com.person.core.exceptions.IncorrectInputException;
 import com.person.core.exceptions.ValidationException;
 
 public enum ActionType {
@@ -24,6 +25,6 @@ public enum ActionType {
                 return a;
             }
         }
-        throw new ValidationException("Bad action");
+        throw new IncorrectInputException("Incorrect action name!");
     }
 }
