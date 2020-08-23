@@ -1,17 +1,21 @@
 package com.person.core.model;
 
+import com.person.core.enumeration.ActionType;
+import com.person.core.enumeration.GenderType;
+import com.person.core.enumeration.Profession;
 import com.person.core.exceptions.ValidationException;
 import com.person.core.service.PersonAction;
 import com.person.utils.Validator;
 
-public abstract class BasePerson implements PersonAction {
+public abstract class BasePerson {
+    protected int id;
     protected String name;
     protected String lastName;
     protected String surname;
     protected String nickname;
     protected int age;
     protected String email;
-    protected String  gender;
+    protected GenderType  gender;
 
     private static final String NAME_REGEXP = "^[A-Z][a-z]*$";
     private static final String NICKNAME_REGEXP = "^[a-z0-9]+$";
@@ -19,7 +23,10 @@ public abstract class BasePerson implements PersonAction {
 
     protected PersonAction actions;
 
-    public BasePerson() {}
+    public int getId()
+    {
+        return id;
+    }
 
     /**
      * Set the value of name
@@ -146,17 +153,17 @@ public abstract class BasePerson implements PersonAction {
      */
     public void setGender(String gender)
     {
-        if(!Validator.gender(gender))
+        if(!Validator.gender(GenderType.valueOf(gender)))
             throw new ValidationException("Invalid gender!");
 
-        this.gender = gender;
+        this.gender = GenderType.valueOf(gender);
     }
 
     /**
      * Get the value of gender
      * @return the value of gender
      */
-    public String getGender() { return gender; }
+    public GenderType getGender() { return gender; }
 
     /**
      * Set the value of designation
@@ -170,4 +177,7 @@ public abstract class BasePerson implements PersonAction {
      */
     public abstract String getDesignation();
 
+    public abstract void act(ActionType action);
+
+    public abstract Profession getProfession();
 }

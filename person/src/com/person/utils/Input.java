@@ -1,5 +1,7 @@
 package com.person.utils;
 
+import com.person.core.enumeration.GenderType;
+
 import java.util.Scanner;
 
 public class Input {

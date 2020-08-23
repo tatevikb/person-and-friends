@@ -44,24 +44,6 @@ public class ProgrammerActionImpl implements ProgrammerAction {
     }
 
     @Override
-    public void act(ActionType actionType) {
-        switch (actionType) {
-            case EAT:
-                eat();
-                break;
-            case WALK:
-                walk();
-                break;
-            case LEARN:
-                learn();
-                break;
-            case CODE:
-                coding();
-                break;
-        }
-    }
-
-    @Override
     /**
      * Checks, is programmer learned? Programmer can code only after learning
      */

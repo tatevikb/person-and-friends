@@ -1,25 +1,23 @@
 package com.person.core.model;
 
-import com.person.core.enumeration.ActionType;
 import com.person.core.enumeration.Profession;
 import com.person.core.enumeration.SingerType;
 import com.person.core.exceptions.ValidationException;
-import com.person.core.service.SingerAction;
-import com.person.core.service.impl.PersonActionFactory;
+import com.person.core.service.utils.SingerExt;
 
-public class Singer extends BasePerson implements SingerAction {
+public class Singer extends SingerExt {
   private SingerType designation;
   private String bandName;
 
-  public Singer ()
+  public Singer(int id)
   {
-    actions = PersonActionFactory.getPersonAction(Profession.SINGER, this);
+    this.id = id;
   }
 
-  /**
-   * Set the value of bandName
-   * @param bandName the new value of bandName
-   */
+   /**
+    * Set the value of bandName
+    * @param bandName the new value of bandName
+    */
   public void setBandName(String bandName) {
 
     if(name.length() > 255)
@@ -37,31 +35,6 @@ public class Singer extends BasePerson implements SingerAction {
   }
 
   @Override
-  public void singing() {
-      ((SingerAction) actions).singing();
-  }
-
-  @Override
-  public void playingGuitar() {
-      ((SingerAction) actions).playingGuitar();
-  }
-
-  @Override
-  public void learn() {
-    actions.learn();
-  }
-
-  @Override
-  public void eat() {
-    actions.eat();
-  }
-
-  @Override
-  public void walk() {
-    actions.walk();
-  }
-
-  @Override
   public void setDesignation(String designation) {
       this.designation = SingerType.valueOf(designation);
   }
@@ -71,9 +44,4 @@ public class Singer extends BasePerson implements SingerAction {
     return designation.toString();
   }
 
-  @Override
-  public void act(ActionType actionType)
-  {
-    actions.act(actionType);
-  }
 }

@@ -1,19 +1,17 @@
 package com.person.core.model;
 
-import com.person.core.enumeration.ActionType;
 import com.person.core.enumeration.DancerType;
 import com.person.core.enumeration.Profession;
 import com.person.core.exceptions.ValidationException;
-import com.person.core.service.DancerAction;
-import com.person.core.service.impl.PersonActionFactory;
+import com.person.core.service.utils.DancerExt;
 
-public class Dancer extends BasePerson implements DancerAction {
+public class Dancer extends DancerExt {
     private DancerType designation;
     private String groupName;
 
-    public Dancer()
+    public Dancer(int id)
     {
-        actions = PersonActionFactory.getPersonAction(Profession.DANCER, this);
+        this.id = id;
     }
 
     /**
@@ -36,39 +34,13 @@ public class Dancer extends BasePerson implements DancerAction {
     return groupName;
   }
 
-    @Override
-    public void dancing() {
-        ((DancerAction) actions).dancing();
-    }
 
-    @Override
-    public void learn() {
-        actions.learn();
-    }
-
-    @Override
-    public void eat() {
-        actions.eat();
-    }
-
-    @Override
-    public void walk() {
-        actions.walk();
-    }
-
-    @Override
     public void setDesignation(String designation) {
       this.designation = DancerType.valueOf(designation);
     }
 
-    @Override
     public String getDesignation() {
         return designation.toString();
     }
 
-    @Override
-    public void act(ActionType actionType)
-    {
-        actions.act(actionType);
-    }
 }

@@ -1,5 +1,6 @@
 package com.person.utils;
 
+import com.person.core.enumeration.GenderType;
 import com.person.core.model.Singer;
 import com.person.core.model.BasePerson;
 import com.person.core.model.Dancer;

@@ -35,27 +35,6 @@ public class SingerActionImpl implements SingerAction {
     }
 
     @Override
-    public void act(ActionType actionType) {
-        switch (actionType) {
-            case EAT:
-                eat();
-                break;
-            case WALK:
-                walk();
-                break;
-            case LEARN:
-                learn();
-                break;
-            case SING:
-                singing();
-                break;
-            case PLAY_GUITAR:
-                playingGuitar();
-                break;
-        }
-    }
-
-    @Override
     /**
      * Checks if singer is full. Singer can sing only after eat.
      */

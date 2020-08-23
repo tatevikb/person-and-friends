@@ -42,24 +42,6 @@ public class DancerActionImpl implements DancerAction {
         System.out.println();
     }
 
-    @Override
-    public void act(ActionType actionType) {
-        switch (actionType) {
-            case EAT:
-                eat();
-                break;
-            case WALK:
-                walk();
-                break;
-            case LEARN:
-                learn();
-                break;
-            case DANCE:
-                dancing();
-                break;
-        }
-    }
-
     /**
      * Checks, is dancer full? Dancer can dancing only after eating.
      */

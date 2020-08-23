@@ -8,6 +8,8 @@ import com.person.core.model.Dancer;
 import com.person.core.model.Programmer;
 
 public class PersonFactory {
+    private static int id = 0;
+
     /**
      * Creates person type by profession.
      * @param profession
@@ -15,11 +17,11 @@ public class PersonFactory {
      */
     public static BasePerson create(Profession profession) {
         if(profession == Profession.DANCER)
-            return new Dancer();
+            return new Dancer(id++);
         if(profession == Profession.SINGER)
-            return new Singer();
+            return new Singer(id++);
         if(profession == Profession.PROGRAMMER)
-            return new Programmer();
+            return new Programmer(id++);
 
         throw new NotFoundException("Person not supported!");
     }

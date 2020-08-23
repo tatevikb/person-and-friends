@@ -1,21 +1,19 @@
 package com.person.core.model;
 
-import com.person.core.enumeration.ActionType;
+
 import com.person.core.enumeration.Profession;
 import com.person.core.enumeration.ProgrammerType;
 import com.person.core.exceptions.ValidationException;
-import com.person.core.service.ProgrammerAction;
-import com.person.core.service.impl.PersonActionFactory;
+import com.person.core.service.utils.ProgrammerExt;
 
-public class Programmer extends BasePerson implements ProgrammerAction {
+public class Programmer extends ProgrammerExt {
   private ProgrammerType designation;
   private String companyName;
 
-  public Programmer() 
+  public Programmer(int id)
   {
-    actions = PersonActionFactory.getPersonAction(Profession.PROGRAMMER, this);
+    this.id = id;
   }
-
   /**
    * Set the value of companyName
    * @param companyName the new value of companyName
@@ -37,26 +35,6 @@ public class Programmer extends BasePerson implements ProgrammerAction {
   }
 
   @Override
-  public void coding() {
-      ((ProgrammerAction) actions).coding();
-  }
-
-  @Override
-  public void learn() {
-      actions.learn();
-  }
-
-  @Override
-  public void eat() {
-    actions.eat();
-  }
-
-  @Override
-  public void walk() {
-    actions.walk();
-  }
-
-  @Override
   public void setDesignation(String designation) {
     this.designation = ProgrammerType.valueOf(designation);
   }
@@ -64,12 +42,6 @@ public class Programmer extends BasePerson implements ProgrammerAction {
   @Override
   public String getDesignation() {
     return designation.toString();
-  }
-
-  @Override
-  public void act(ActionType actionType)
-  {
-      actions.act(actionType);
   }
 
 }
