@@ -67,4 +67,5 @@ public class DancerExt extends BasePerson implements DancerAction, PersonAction 
     {
         return Profession.DANCER;
     }
+
 }

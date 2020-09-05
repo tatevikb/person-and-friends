@@ -24,7 +24,7 @@ public abstract class BasePerson implements Comparable<BasePerson> {
 
     protected PersonAction actions;
 
-    BasePerson() {}
+    public BasePerson() {}
 
     public BasePerson(Builder builder) {
         this.name = builder.name;
