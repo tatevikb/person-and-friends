@@ -1,7 +1,6 @@
 package com.person.core.model;
 
 import com.person.core.enumeration.DancerType;
-import com.person.core.enumeration.Profession;
 import com.person.core.exceptions.ValidationException;
 import com.person.core.service.utils.DancerExt;
 

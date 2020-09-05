@@ -6,10 +6,9 @@ import com.person.core.model.Dancer;
 import com.person.core.model.Programmer;
 import com.person.core.model.Singer;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class PersonList {
 
@@ -118,4 +117,35 @@ public class PersonList {
         return result;
     }
 
+    /**
+     * Get all unique names of persons.
+     * @return result
+     */
+    public Set<String> getUniqueNames() {
+        Set<String> result = new HashSet<>();
+        persons.forEach((p, a) -> result.add(p.getName()));
+        return result;
+    }
+
+    /**
+     * Sort based on natural ordering.
+     * @return
+     */
+    public List<BasePerson> sortByNatural() {
+        List<BasePerson> result = new ArrayList<>();
+        persons.forEach( (p, a) -> result.add(p) );
+        Collections.sort(result, Comparator.naturalOrder());
+        return result;
+    }
+
+    /**
+     * Sort based on name.
+     * @return
+     */
+    public List<BasePerson> sortByName() {
+        List<BasePerson> result = new ArrayList<>();
+        persons.forEach( (p, a) -> result.add(p) );
+        Collections.sort(result);
+        return result;
+    }
 }
